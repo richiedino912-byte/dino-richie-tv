@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DÏÑØ RÏĆHÍĘ TV SHOW</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">DÏÑØ RÏĆHÍĘ <span>TV SHOW</span></div>
+  <div class="search"><input id="searchInput" placeholder="Search videos..." aria-label="Search videos"><button id="searchBtn">⌕</button></div>
+</header>
+<nav class="chips">
+  <button class="chip active" data-category="All">All</button>
+  <button class="chip" data-category="Trending">Trending</button>
+  <button class="chip" data-category="Entertainment">Entertainment</button>
+  <button class="chip" data-category="Music">Music</button>
+  <button class="chip" data-category="Lifestyle">Lifestyle</button>
+  <button class="chip" data-category="Interviews">Interviews</button>
+</nav>
+<main class="layout">
+<section>
+  <div class="player-wrap"><video id="player" controls poster="assets/poster.svg"><source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">Your browser does not support video.</video></div>
+  <div class="video-info"><h1 id="videoTitle">Morning Energy — Lifestyle Vlog</h1><div class="meta" id="videoMeta">DÏÑØ RÏĆHÍĘ TV SHOW • Entertainment • 2026</div><p id="videoDescription">Stay locked in for fresh entertainment, trending conversations, music, lifestyle and viral moments.</p><div class="actions"><button id="downloadBtn">⬇ Download</button><button id="shareBtn">↗ Share</button><button id="likeBtn">♡ Like</button></div></div>
+</section>
+<aside><h2>Up next</h2><div id="upNext"></div><label class="autoplay"><input id="autoplay" type="checkbox"> Autoplay</label></aside>
+</main>
+<section class="more"><div class="section-head"><h2>More videos</h2><span id="count"></span></div><div id="grid" class="grid"></div></section>
+<div id="toast" class="toast">Welcome to DÏÑØ RÏĆHÍĘ TV SHOW 🔥</div>
+<script src="script.js"></script>
+</body></html>
