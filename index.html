@@ -4,144 +4,324 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#09090d">
 <title>DÏÑØ RÏĆHÍĘ 18+ TV SHOW 🔥🚀</title>
 <meta name="description" content="DÏÑØ RÏĆHÍĘ 18+ TV SHOW — Premium Entertainment. One Destination.">
-<link rel="stylesheet" href="styles.css">
+
 <style>
-body { margin:0; }
-.player-wrap { width:100%; aspect-ratio:16/9; background:#000; overflow:hidden; border-radius:12px; }
-.player-wrap iframe { width:100%; height:100%; border:0; display:block; }
-.age-gate { position:fixed; inset:0; z-index:9999; display:flex; align-items:center; justify-content:center; padding:24px; background:#080808; color:#fff; text-align:center; }
-.age-card { max-width:420px; }
-.age-card h1 { color:#e5bd62; }
-.age-card button { padding:13px 20px; margin:8px; border:0; border-radius:8px; font-weight:bold; cursor:pointer; }
-.enter-btn { background:#e5bd62; color:#111; }
-.exit-btn { background:#333; color:#fff; }
-.social-links { display:flex; flex-wrap:wrap; gap:12px; padding:20px; justify-content:center; }
-.social-links a { color:#e5bd62; }
+:root {
+  --bg:#09090d;
+  --panel:#13131b;
+  --gold:#e8c36b;
+  --gold2:#b78a36;
+  --text:#f8f8fb;
+  --muted:#a4a4b2;
+  --line:#292936;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;line-height:1.5
+}
+button,input,a{font:inherit}
+button{cursor:pointer}
+a{color:inherit}
+.topbar{
+  position:sticky;top:0;z-index:10;
+  display:flex;justify-content:space-between;align-items:center;
+  gap:15px;padding:15px 5%;background:#0d0d13;
+  border-bottom:1px solid var(--line)
+}
+.brand{font-size:17px;font-weight:900;letter-spacing:.4px}
+.brand span{display:block;font-size:11px;color:var(--gold);letter-spacing:1.5px}
+.search{
+  display:flex;align-items:center;width:min(360px,50%);
+  background:#191922;border:1px solid #343442;border-radius:10px;padding:0 10px
+}
+.search input{width:100%;min-width:0;padding:11px 5px;background:transparent;border:0;outline:0;color:white}
+.search button{background:none;color:var(--gold);border:0;font-size:20px}
+.chips{display:flex;gap:8px;padding:14px 5%;overflow:auto;border-bottom:1px solid #20202a}
+.chip{white-space:nowrap;background:#171720;border:1px solid #333340;color:#ddd;padding:9px 14px;border-radius:9px}
+.chip.active,.chip:hover{background:var(--gold);color:#15120a;border-color:var(--gold)}
+.layout{max-width:1300px;margin:25px auto;padding:0 18px;display:grid;grid-template-columns:minmax(0,2fr) minmax(240px,.85fr);gap:22px}
+.eyebrow{font-size:10px;letter-spacing:2px;color:var(--gold);font-weight:bold}
+.player-wrap{aspect-ratio:16/9;background:#000;border:1px solid #30303a;border-radius:13px;overflow:hidden}
+.player-wrap iframe{width:100%;height:100%;display:block;border:0}
+.video-info{padding:17px 2px}
+.video-info h1{font-size:clamp(22px,3vw,31px);line-height:1.2;margin:4px 0 8px}
+.meta{font-size:12px;color:var(--muted)}
+.description{color:#d0d0da}
+.stats{display:flex;gap:25px;flex-wrap:wrap;padding:14px 0;margin:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat{display:flex;align-items:center;gap:7px}
+.stat .symbol{color:var(--gold);font-size:19px}
+.stat strong{font-size:15px}
+.stat small{font-size:11px;color:var(--muted)}
+.actions{display:flex;gap:9px;flex-wrap:wrap}
+.action{
+  display:inline-flex;justify-content:center;align-items:center;gap:7px;
+  padding:11px 14px;border-radius:9px;border:1px solid #363644;
+  background:#1a1a24;color:white;text-decoration:none;font-weight:bold;font-size:13px
+}
+.action .symbol{color:var(--gold);font-size:17px}
+.action.gold{background:linear-gradient(135deg,#f3d88c,#bd8e38);color:#171209;border:0}
+.action.gold .symbol{color:#171209}
+.note{font-size:11px;color:var(--muted);margin-top:13px}
+aside{align-self:start;padding:16px;background:var(--panel);border:1px solid var(--line);border-radius:13px}
+aside h2,.more h2{font-size:19px;margin:0 0 13px}
+.next-card{padding:12px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.next-card:last-child{border:0}
+.next-card strong{font-size:13px;display:block}
+.next-card small{color:var(--muted);font-size:11px}
+.next-card:hover strong{color:var(--gold)}
+.more{max-width:1300px;margin:30px auto 50px;padding:0 18px}
+.section-head{display:flex;justify-content:space-between;align-items:center}
+.section-head span{font-size:12px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:11px;overflow:hidden;cursor:pointer}
+.card-art{aspect-ratio:16/9;display:grid;place-items:center;background:linear-gradient(135deg,#29251a,#11111a);color:var(--gold);font-size:32px}
+.card-body{padding:12px}
+.card-body strong{display:block;font-size:14px}
+.card-body small{display:block;color:var(--muted);margin-top:5px;font-size:11px}
+.card-stats{display:flex;gap:12px;margin-top:10px;color:#c5c5d0;font-size:11px}
+.social{display:flex;justify-content:center;gap:17px;flex-wrap:wrap;padding:24px 15px;border-top:1px solid var(--line)}
+.social a{font-size:12px;color:var(--gold);text-decoration:none}
+footer{text-align:center;color:var(--muted);padding:0 18px 25px;font-size:11px}
+.age-gate{
+  position:fixed;inset:0;z-index:1000;background:#09090d;
+  display:flex;justify-content:center;align-items:center;padding:20px;text-align:center
+}
+.age-card{max-width:440px;padding:28px 22px;background:#14141c;border:1px solid #66512b;border-radius:17px}
+.age-card h1{color:var(--gold);font-size:27px}
+.age-card p{color:#c5c5d0;font-size:13px}
+.age-card button{display:block;width:100%;padding:13px;margin-top:10px;border:0;border-radius:9px;font-weight:bold}
+.enter{background:var(--gold);color:#171209}
+.exit{background:#292934;color:white}
+.age-card small{display:block;color:#999;font-size:10px;margin-top:12px}
+#status{font-size:12px;color:var(--gold);margin-top:12px}
+@media(max-width:800px){
+  .topbar{align-items:stretch;flex-direction:column;padding:13px 16px}
+  .search{width:100%}.layout{grid-template-columns:1fr;margin-top:18px}
+  .chips{padding:12px 16px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:480px){
+  .layout,.more{padding-left:12px;padding-right:12px}
+  .grid{grid-template-columns:1fr}.action{padding:10px}
+}
 </style>
 </head>
-<body>
 
-<div id="ageGate" class="age-gate">
+<body>
+<div class="age-gate" id="ageGate">
   <div class="age-card">
-    <h1>DÏÑØ RÏĆHÍĘ 18+ TV SHOW 🔥🚀</h1>
-    <h2>Adults Only — 18+</h2>
-    <p>This website is intended only for adults aged 18 or older. By continuing, you confirm that you are at least 18 and that accessing this content is lawful where you live.</p>
-    <button class="enter-btn" onclick="enterSite()">I AM 18 OR OLDER — ENTER</button>
-    <button class="exit-btn" onclick="leaveSite()">EXIT</button>
-    <p><small>This confirmation is not formal age verification.</small></p>
+    <div style="font-size:36px">👑</div>
+    <h1>DÏÑØ RÏĆHÍĘ<br>18+ TV SHOW 🔥🚀</h1>
+    <p>Adults only. Continue only if you are at least 18 years old and accessing this content is lawful where you live.</p>
+    <button class="enter" id="enterBtn">I AM 18 OR OLDER — ENTER</button>
+    <button class="exit" id="exitBtn">EXIT</button>
+    <small>This is an age confirmation, not formal age verification.</small>
   </div>
 </div>
 
 <header class="topbar">
   <div class="brand">DÏÑØ RÏĆHÍĘ <span>18+ TV SHOW 🔥🚀</span></div>
-  <div class="search">
-    <input id="searchInput" placeholder="Search videos..." aria-label="Search videos">
-    <button id="searchBtn">⌕</button>
-  </div>
+  <label class="search">
+    <input id="search" placeholder="Search videos..." aria-label="Search videos">
+    <button id="clearSearch" type="button">×</button>
+  </label>
 </header>
 
 <nav class="chips">
-  <button class="chip active" data-category="All">All</button>
-  <button class="chip" data-category="Trending">Trending</button>
-  <button class="chip" data-category="Entertainment">Entertainment</button>
-  <button class="chip" data-category="Music">Music</button>
-  <button class="chip" data-category="Lifestyle">Lifestyle</button>
-  <button class="chip" data-category="Interviews">Interviews</button>
+  <button class="chip active" data-cat="All">All videos</button>
+  <button class="chip" data-cat="Trending">Trending</button>
+  <button class="chip" data-cat="Entertainment">Entertainment</button>
+  <button class="chip" data-cat="Music">Music</button>
+  <button class="chip" data-cat="Lifestyle">Lifestyle</button>
+  <button class="chip" data-cat="Interviews">Interviews</button>
 </nav>
 
 <main class="layout">
-  <section>
-    <div class="player-wrap">
-      <iframe
-        src="https://vidbos.com/embed/8h5eeGWywHjYFUP"
-        title="DÏÑØ RÏĆHÍĘ TV SHOW video"
-        allowfullscreen
-        loading="lazy">
-      </iframe>
+<section>
+  <p class="eyebrow">● FEATURED VIDEO</p>
+  <div class="player-wrap">
+    <iframe id="videoFrame"
+      src="https://vidbos.com/embed/8h5eeGWywHjYFUP"
+      title="Featured video"
+      allowfullscreen loading="lazy"></iframe>
+  </div>
+
+  <div class="video-info">
+    <p class="eyebrow">NOW PLAYING</p>
+    <h1 id="videoTitle">Featured Video</h1>
+    <div class="meta" id="videoMeta">DÏÑØ RÏĆHÍĘ 18+ TV SHOW • Entertainment</div>
+    <p class="description" id="videoDescription">Premium Entertainment. One Destination.</p>
+
+    <div class="stats">
+      <div class="stat"><span class="symbol">◉</span><strong id="views">0</strong><small>views on this device</small></div>
+      <div class="stat"><span class="symbol">♥</span><strong id="likes">0</strong><small>likes on this device</small></div>
     </div>
 
-    <div class="video-info">
-      <h1 id="videoTitle">Featured Video</h1>
-      <div class="meta" id="videoMeta">DÏÑØ RÏĆHÍĘ 18+ TV SHOW • Entertainment</div>
-      <p id="videoDescription">Premium Entertainment. One Destination.</p>
-      <div class="actions">
-        <button id="downloadBtn" onclick="requireSignIn()">⬇ Download</button>
-        <button id="shareBtn" onclick="shareSite()">↗ Share</button>
-        <button id="likeBtn" onclick="likeVideo()">♡ Like</button>
-      </div>
-      <p id="statusMessage" aria-live="polite"></p>
-      <p><small>Downloads and likes require a secure account service to be fully enabled.</small></p>
+    <div class="actions">
+      <button class="action" id="likeBtn"><span class="symbol">♡</span> Like <b id="likeBtnCount">0</b></button>
+      <a class="action gold" id="downloadBtn" href="https://vidbos.com/8h5eeGWywHjYFUP/watch" target="_blank" rel="noopener"><span class="symbol">⬇</span> Download / Watch</a>
+      <button class="action" id="shareBtn"><span class="symbol">↗</span> Share</button>
     </div>
-  </section>
+    <p class="note" id="status">Counts are stored on this device only. Shared counts need a database.</p>
+  </div>
+</section>
 
-  <aside>
-    <h2>Up next</h2>
-    <div id="upNext">
-      <p>Your next videos will appear here as you add them.</p>
-    </div>
-    <label class="autoplay"><input id="autoplay" type="checkbox"> Autoplay</label>
-  </aside>
+<aside>
+  <h2>Up next</h2>
+  <div id="upNext"></div>
+  <p class="note">More videos will appear here when added.</p>
+</aside>
 </main>
 
 <section class="more">
-  <div class="section-head">
-    <h2>More Videos</h2>
-    <span id="count">1 featured video</span>
-  </div>
-  <div id="grid" class="grid">
-    <article class="video-card">
-      <div class="player-wrap">
-        <iframe
-          src="https://vidbos.com/embed/8h5eeGWywHjYFUP"
-          title="Featured video"
-          loading="lazy"
-          allowfullscreen>
-        </iframe>
-      </div>
-      <h3>Featured Video</h3>
-      <p>DÏÑØ RÏĆHÍĘ 18+ TV SHOW</p>
-    </article>
-  </div>
+  <div class="section-head"><h2>More videos</h2><span id="videoCount">1 video</span></div>
+  <div class="grid" id="grid"></div>
 </section>
 
-<section class="social-links">
+<div class="social">
   <a href="https://t.me/dinorichie1" target="_blank" rel="noopener">Telegram</a>
   <a href="https://whatsapp.com/channel/0029Vb6nTP8BfxnyfWM2fV2L" target="_blank" rel="noopener">WhatsApp Channel</a>
   <a href="https://chat.whatsapp.com/GvzCvgGpQPbHadTPnk43i1?s=cl&amp;p=a&amp;mlu=4&amp;ilr=4&amp;iam=2" target="_blank" rel="noopener">WhatsApp Group</a>
-  <a href="https://wa.me/2349169688476" target="_blank" rel="noopener">Contact Us</a>
-</section>
+  <a href="https://wa.me/2349169688476" target="_blank" rel="noopener">Contact</a>
+</div>
 
-<div id="toast" class="toast">Welcome to DÏÑØ RÏĆHÍĘ 18+ TV SHOW 🔥🚀</div>
+<footer>
+  DÏÑØ RÏĆHÍĘ 18+ TV SHOW 🔥🚀<br>
+  Premium Entertainment. One Destination.<br><br>
+  Publish only lawful content featuring consenting adults, with the required distribution rights.
+</footer>
 
-<script src="script.js"></script>
 <script>
-function enterSite() {
-  document.getElementById('ageGate').style.display = 'none';
-}
-function leaveSite() {
-  window.location.href = 'https://www.google.com/';
-}
-function requireSignIn() {
-  document.getElementById('statusMessage').textContent =
-    'Google sign-in and secure downloads are not connected yet.';
-}
-function shareSite() {
-  if (navigator.share) {
-    navigator.share({title: 'DÏÑØ RÏĆHÍĘ 18+ TV SHOW', url: window.location.href});
-  } else if (navigator.clipboard) {
-    navigator.clipboard.writeText(window.location.href);
-    document.getElementById('statusMessage').textContent = 'Website link copied if clipboard permission is available.';
-  } else {
-    document.getElementById('statusMessage').textContent = window.location.href;
-  }
-}
-function likeVideo() {
-  document.getElementById('statusMessage').textContent =
-    'Likes will be saved when a secure account and database service is connected.';
-}
-</script>
+const VIDEO_ID = "8h5eeGWywHjYFUP";
+const VIDEO_LINK = "https://vidbos.com/8h5eeGWywHjYFUP/watch";
 
+const videos = [
+  {id:VIDEO_ID,title:"Featured Video",cat:"Entertainment",desc:"Premium Entertainment. One Destination.",icon:"▶",embed:"https://vidbos.com/embed/"+VIDEO_ID},
+  {id:"coming1",title:"More Videos Coming Soon",cat:"Trending",desc:"New videos will be added soon.",icon:"✦",coming:true},
+  {id:"coming2",title:"Music & Entertainment",cat:"Music",desc:"More videos will be added soon.",icon:"♫",coming:true}
+];
+
+let current = 0;
+const $ = id => document.getElementById(id);
+const key = (type,id) => "dino_"+type+"_"+id;
+
+function number(type,id) {
+  try { return Math.max(0,Number(localStorage.getItem(key(type,id))||0)); }
+  catch(e) { return 0; }
+}
+function saveNumber(type,id,n) {
+  try { localStorage.setItem(key(type,id),String(n)); } catch(e) {}
+}
+function countText(n) { return new Intl.NumberFormat().format(n); }
+
+function updateStats() {
+  const v = videos[current];
+  const liked = localStorage.getItem(key("liked",v.id)) === "yes";
+  $("views").textContent = countText(number("views",v.id));
+  $("likes").textContent = countText(number("likes",v.id));
+  $("likeBtnCount").textContent = countText(number("likes",v.id));
+  $("likeBtn").querySelector(".symbol").textContent = liked ? "♥" : "♡";
+  $("likeBtn").style.borderColor = liked ? "#e8c36b" : "#363644";
+}
+
+function playVideo(i) {
+  current = i;
+  const v = videos[i];
+  if (v.coming) return;
+  $("videoFrame").src = v.embed;
+  $("videoTitle").textContent = v.title;
+  $("videoMeta").textContent = "DÏÑØ RÏĆHÍĘ 18+ TV SHOW • "+v.cat;
+  $("videoDescription").textContent = v.desc;
+  $("downloadBtn").href = VIDEO_LINK;
+  $("status").textContent = "Opening the hosted video. Download availability depends on Vidbos settings.";
+  saveNumber("views",v.id,number("views",v.id)+1);
+  updateStats();
+  renderCards();
+  renderUpNext();
+}
+
+function renderCards(list=videos) {
+  $("grid").innerHTML = "";
+  $("videoCount").textContent = list.length+" videos";
+  list.forEach(v => {
+    const i = videos.indexOf(v);
+    const card = document.createElement("article");
+    card.className = "card";
+    card.innerHTML = '<div class="card-art"></div><div class="card-body"><strong></strong><small></small><div class="card-stats"><span></span><span></span></div></div>';
+    card.querySelector(".card-art").textContent = v.icon;
+    card.querySelector(".card-body strong").textContent = v.title;
+    card.querySelector(".card-body small").textContent = v.cat+(v.coming?" • Coming soon":"");
+    card.querySelectorAll(".card-stats span")[0].textContent = "◉ "+countText(number("views",v.id))+" views";
+    card.querySelectorAll(".card-stats span")[1].textContent = "♥ "+countText(number("likes",v.id))+" likes";
+    card.addEventListener("click",()=>v.coming?$("status").textContent="This video has not been added yet.":playVideo(i));
+    $("grid").appendChild(card);
+  });
+}
+
+function renderUpNext() {
+  $("upNext").innerHTML = "";
+  videos.filter((v,i)=>i!==current).forEach(v=>{
+    const i = videos.indexOf(v);
+    const item = document.createElement("div");
+    item.className = "next-card";
+    item.innerHTML = "<strong></strong><small></small>";
+    item.querySelector("strong").textContent = v.icon+"  "+v.title;
+    item.querySelector("small").textContent = v.cat+(v.coming?" • Coming soon":"");
+    item.addEventListener("click",()=>v.coming?$("status").textContent="Add this video before publishing it.":playVideo(i));
+    $("upNext").appendChild(item);
+  });
+}
+
+$("enterBtn").addEventListener("click",()=>{$("ageGate").style.display="none";});
+$("exitBtn").addEventListener("click",()=>{location.href="https://www.google.com/";});
+
+$("likeBtn").addEventListener("click",()=>{
+  const v = videos[current], likedKey = key("liked",v.id);
+  if(localStorage.getItem(likedKey)==="yes"){
+    localStorage.removeItem(likedKey);
+    saveNumber("likes",v.id,Math.max(0,number("likes",v.id)-1));
+  } else {
+    localStorage.setItem(likedKey,"yes");
+    saveNumber("likes",v.id,number("likes",v.id)+1);
+  }
+  updateStats();
+  renderCards();
+  $("status").textContent="Your like is saved on this device only. Global like counts require a database.";
+});
+
+$("shareBtn").addEventListener("click",async()=>{
+  try {
+    if(navigator.share) await navigator.share({title:"DÏÑØ RÏĆHÍĘ 18+ TV SHOW",url:VIDEO_LINK});
+    else { await navigator.clipboard.writeText(VIDEO_LINK); $("status").textContent="Video link copied."; }
+  } catch(e) { $("status").textContent=VIDEO_LINK; }
+});
+
+$("downloadBtn").addEventListener("click",()=>{
+  $("status").textContent="Opening the Vidbos page. A direct download depends on the host's settings.";
+});
+
+$("clearSearch").addEventListener("click",()=>{$("search").value="";filterVideos();});
+$("search").addEventListener("input",filterVideos);
+
+function filterVideos() {
+  const q = $("search").value.toLowerCase().trim();
+  const cat = document.querySelector(".chip.active").dataset.cat;
+  renderCards(videos.filter(v=>(cat==="All"||v.cat===cat)&&(v.title+" "+v.cat+" "+v.desc).toLowerCase().includes(q)));
+}
+
+document.querySelectorAll(".chip").forEach(btn=>btn.addEventListener("click",()=>{
+  document.querySelectorAll(".chip").forEach(x=>x.classList.remove("active"));
+  btn.classList.add("active");
+  filterVideos();
+}));
+
+renderCards();
+renderUpNext();
+updateStats();
+</script>
 </body>
-</html>
+  </html>
+      
