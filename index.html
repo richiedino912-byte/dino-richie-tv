@@ -1,16 +1,47 @@
+
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DÏÑØ RÏĆHÍĘ TV SHOW</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DÏÑØ RÏĆHÍĘ 18+ TV SHOW 🔥🚀</title>
+<meta name="description" content="DÏÑØ RÏĆHÍĘ 18+ TV SHOW — Premium Entertainment. One Destination.">
 <link rel="stylesheet" href="styles.css">
+<style>
+body { margin:0; }
+.player-wrap { width:100%; aspect-ratio:16/9; background:#000; overflow:hidden; border-radius:12px; }
+.player-wrap iframe { width:100%; height:100%; border:0; display:block; }
+.age-gate { position:fixed; inset:0; z-index:9999; display:flex; align-items:center; justify-content:center; padding:24px; background:#080808; color:#fff; text-align:center; }
+.age-card { max-width:420px; }
+.age-card h1 { color:#e5bd62; }
+.age-card button { padding:13px 20px; margin:8px; border:0; border-radius:8px; font-weight:bold; cursor:pointer; }
+.enter-btn { background:#e5bd62; color:#111; }
+.exit-btn { background:#333; color:#fff; }
+.social-links { display:flex; flex-wrap:wrap; gap:12px; padding:20px; justify-content:center; }
+.social-links a { color:#e5bd62; }
+</style>
 </head>
 <body>
+
+<div id="ageGate" class="age-gate">
+  <div class="age-card">
+    <h1>DÏÑØ RÏĆHÍĘ 18+ TV SHOW 🔥🚀</h1>
+    <h2>Adults Only — 18+</h2>
+    <p>This website is intended only for adults aged 18 or older. By continuing, you confirm that you are at least 18 and that accessing this content is lawful where you live.</p>
+    <button class="enter-btn" onclick="enterSite()">I AM 18 OR OLDER — ENTER</button>
+    <button class="exit-btn" onclick="leaveSite()">EXIT</button>
+    <p><small>This confirmation is not formal age verification.</small></p>
+  </div>
+</div>
+
 <header class="topbar">
-  <div class="brand">DÏÑØ RÏĆHÍĘ <span>TV SHOW</span></div>
-  <div class="search"><input id="searchInput" placeholder="Search videos..." aria-label="Search videos"><button id="searchBtn">⌕</button></div>
+  <div class="brand">DÏÑØ RÏĆHÍĘ <span>18+ TV SHOW 🔥🚀</span></div>
+  <div class="search">
+    <input id="searchInput" placeholder="Search videos..." aria-label="Search videos">
+    <button id="searchBtn">⌕</button>
+  </div>
 </header>
+
 <nav class="chips">
   <button class="chip active" data-category="All">All</button>
   <button class="chip" data-category="Trending">Trending</button>
@@ -19,14 +50,98 @@
   <button class="chip" data-category="Lifestyle">Lifestyle</button>
   <button class="chip" data-category="Interviews">Interviews</button>
 </nav>
+
 <main class="layout">
-<section>
-  <div class="player-wrap"><video id="player" controls poster="assets/poster.svg"><source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">Your browser does not support video.</video></div>
-  <div class="video-info"><h1 id="videoTitle">Morning Energy — Lifestyle Vlog</h1><div class="meta" id="videoMeta">DÏÑØ RÏĆHÍĘ TV SHOW • Entertainment • 2026</div><p id="videoDescription">Stay locked in for fresh entertainment, trending conversations, music, lifestyle and viral moments.</p><div class="actions"><button id="downloadBtn">⬇ Download</button><button id="shareBtn">↗ Share</button><button id="likeBtn">♡ Like</button></div></div>
-</section>
-<aside><h2>Up next</h2><div id="upNext"></div><label class="autoplay"><input id="autoplay" type="checkbox"> Autoplay</label></aside>
+  <section>
+    <div class="player-wrap">
+      <iframe
+        src="https://vidbos.com/embed/8h5eeGWywHjYFUP"
+        title="DÏÑØ RÏĆHÍĘ TV SHOW video"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+    </div>
+
+    <div class="video-info">
+      <h1 id="videoTitle">Featured Video</h1>
+      <div class="meta" id="videoMeta">DÏÑØ RÏĆHÍĘ 18+ TV SHOW • Entertainment</div>
+      <p id="videoDescription">Premium Entertainment. One Destination.</p>
+      <div class="actions">
+        <button id="downloadBtn" onclick="requireSignIn()">⬇ Download</button>
+        <button id="shareBtn" onclick="shareSite()">↗ Share</button>
+        <button id="likeBtn" onclick="likeVideo()">♡ Like</button>
+      </div>
+      <p id="statusMessage" aria-live="polite"></p>
+      <p><small>Downloads and likes require a secure account service to be fully enabled.</small></p>
+    </div>
+  </section>
+
+  <aside>
+    <h2>Up next</h2>
+    <div id="upNext">
+      <p>Your next videos will appear here as you add them.</p>
+    </div>
+    <label class="autoplay"><input id="autoplay" type="checkbox"> Autoplay</label>
+  </aside>
 </main>
-<section class="more"><div class="section-head"><h2>More videos</h2><span id="count"></span></div><div id="grid" class="grid"></div></section>
-<div id="toast" class="toast">Welcome to DÏÑØ RÏĆHÍĘ TV SHOW 🔥</div>
+
+<section class="more">
+  <div class="section-head">
+    <h2>More Videos</h2>
+    <span id="count">1 featured video</span>
+  </div>
+  <div id="grid" class="grid">
+    <article class="video-card">
+      <div class="player-wrap">
+        <iframe
+          src="https://vidbos.com/embed/8h5eeGWywHjYFUP"
+          title="Featured video"
+          loading="lazy"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <h3>Featured Video</h3>
+      <p>DÏÑØ RÏĆHÍĘ 18+ TV SHOW</p>
+    </article>
+  </div>
+</section>
+
+<section class="social-links">
+  <a href="https://t.me/dinorichie1" target="_blank" rel="noopener">Telegram</a>
+  <a href="https://whatsapp.com/channel/0029Vb6nTP8BfxnyfWM2fV2L" target="_blank" rel="noopener">WhatsApp Channel</a>
+  <a href="https://chat.whatsapp.com/GvzCvgGpQPbHadTPnk43i1?s=cl&amp;p=a&amp;mlu=4&amp;ilr=4&amp;iam=2" target="_blank" rel="noopener">WhatsApp Group</a>
+  <a href="https://wa.me/2349169688476" target="_blank" rel="noopener">Contact Us</a>
+</section>
+
+<div id="toast" class="toast">Welcome to DÏÑØ RÏĆHÍĘ 18+ TV SHOW 🔥🚀</div>
+
 <script src="script.js"></script>
-</body></html>
+<script>
+function enterSite() {
+  document.getElementById('ageGate').style.display = 'none';
+}
+function leaveSite() {
+  window.location.href = 'https://www.google.com/';
+}
+function requireSignIn() {
+  document.getElementById('statusMessage').textContent =
+    'Google sign-in and secure downloads are not connected yet.';
+}
+function shareSite() {
+  if (navigator.share) {
+    navigator.share({title: 'DÏÑØ RÏĆHÍĘ 18+ TV SHOW', url: window.location.href});
+  } else if (navigator.clipboard) {
+    navigator.clipboard.writeText(window.location.href);
+    document.getElementById('statusMessage').textContent = 'Website link copied if clipboard permission is available.';
+  } else {
+    document.getElementById('statusMessage').textContent = window.location.href;
+  }
+}
+function likeVideo() {
+  document.getElementById('statusMessage').textContent =
+    'Likes will be saved when a secure account and database service is connected.';
+}
+</script>
+
+</body>
+</html>
