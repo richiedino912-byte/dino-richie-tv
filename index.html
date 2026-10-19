@@ -334,6 +334,186 @@ updateStats();
     <p id="comment-message" aria-live="polite"></p>  
   </form>    <h3>Latest comments</h3>  
   <div id="comment-list" aria-live="polite">Loading comments…</div>  
-</section>  </body>  
+</section> </body>  
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+
+  import {
+    getAuth,
+    GoogleAuthProvider,
+    signInWithPopup,
+    signOut,
+    onAuthStateChanged
+  } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+  import {
+    getFirestore,
+    collection,
+    addDoc,
+    query,
+    orderBy,
+    limit,
+    onSnapshot,
+    serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+  // Your Firebase project configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyCCTRS9mJvISW7Bv1HdOplOT-RKAgV_pGI",
+    authDomain: "dino-richie-tv.firebaseapp.com",
+    projectId: "dino-richie-tv",
+    storageBucket: "dino-richie-tv.firebasestorage.app",
+    messagingSenderId: "727445289443",
+    appId: "1:727445289443:web:b99de45b0a8b3e352a88d6",
+    measurementId: "G-ZB93FTNSFG"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+  const googleProvider = new GoogleAuthProvider();
+
+  const signInButton = document.getElementById("google-signin");
+  const signOutButton = document.getElementById("google-signout");
+  const authStatus = document.getElementById("auth-status");
+  const commentForm = document.getElementById("comment-form");
+  const commentText = document.getElementById("comment-text");
+  const commentMessage = document.getElementById("comment-message");
+  const commentList = document.getElementById("comment-list");
+
+  let currentUser = null;
+
+  // Google sign-in
+  signInButton.addEventListener("click", async () => {
+    authStatus.textContent = "Opening Google sign-in…";
+
+    try {
+      await signInWithPopup(auth, googleProvider);
+    } catch (error) {
+      console.error(error);
+      authStatus.textContent =
+        "Sign-in failed: " + error.message;
+    }
+  });
+
+  // Sign out
+  signOutButton.addEventListener("click", async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error(error);
+      authStatus.textContent = "Sign-out failed. Please try again.";
+    }
+  });
+
+  // Update the page when sign-in status changes
+  onAuthStateChanged(auth, (user) => {
+    currentUser = user;
+
+    signInButton.hidden = !!user;
+    signOutButton.hidden = !user;
+    commentForm.hidden = !user;
+
+    authStatus.textContent = user
+      ? "Signed in as " + (user.displayName || user.email || "Google user")
+      : "Sign in with Google to join the conversation.";
+
+    if (!user) {
+      commentMessage.textContent = "";
+    }
+  });
+
+  // Submit a comment
+  commentForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    if (!currentUser) {
+      commentMessage.textContent = "Please sign in first.";
+      return;
+    }
+
+    const text = commentText.value.trim();
+
+    if (!text) {
+      commentMessage.textContent = "Please write a comment.";
+      return;
+    }
+
+    if (text.length > 500) {
+      commentMessage.textContent = "Comments must be 500 characters or fewer.";
+      return;
+    }
+
+    commentMessage.textContent = "Posting comment…";
+
+    try {
+      await addDoc(collection(db, "comments"), {
+        uid: currentUser.uid,
+        name: (currentUser.displayName || "TV Viewer").slice(0, 80),
+        text: text,
+        videoId: "featured",
+        createdAt: serverTimestamp()
+      });
+
+      commentForm.reset();
+      commentMessage.textContent = "Comment posted successfully!";
+    } catch (error) {
+      console.error(error);
+      commentMessage.textContent =
+        "Could not post comment: " + error.message;
+    }
+  });
+
+  // Show the latest 50 comments
+  const commentsQuery = query(
+    collection(db, "comments"),
+    orderBy("createdAt", "desc"),
+    limit(50)
+  );
+
+  onSnapshot(
+    commentsQuery,
+    (snapshot) => {
+      commentList.replaceChildren();
+
+      if (snapshot.empty) {
+        commentList.textContent = "No comments yet. Be the first!";
+        return;
+      }
+
+      snapshot.forEach((documentSnapshot) => {
+        const data = documentSnapshot.data();
+
+        const card = document.createElement("article");
+        card.style.cssText =
+          "padding:12px;margin:12px 0;background:#1b1b1b;border-radius:8px;border-left:3px solid #c9a227;";
+
+        const name = document.createElement("strong");
+        name.style.color = "#e5c45b";
+        name.textContent = data.name || "TV Viewer";
+
+        const message = document.createElement("p");
+        message.style.cssText = "margin:8px 0;white-space:pre-wrap;overflow-wrap:anywhere;";
+        message.textContent = data.text || "";
+
+        const date = document.createElement("small");
+        date.style.color = "#aaa";
+        date.textContent = data.createdAt?.toDate
+          ? data.createdAt.toDate().toLocaleString()
+          : "Just now";
+
+        card.append(name, message, date);
+        commentList.appendChild(card);
+      });
+    },
+    (error) => {
+      console.error(error);
+      commentList.textContent =
+        "Comments could not load. Please check your Firebase settings.";
+    }
+  );
+    </script>
+  
 </html>
       
