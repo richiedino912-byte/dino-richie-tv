@@ -321,7 +321,19 @@ document.querySelectorAll(".chip").forEach(btn=>btn.addEventListener("click",()=
 renderCards();
 renderUpNext();
 updateStats();
-</script>
-</body>
-  </html>
+</script>  <section id="comments-section" style="max-width:850px;margin:30px auto;padding:20px;background:#111;color:#fff;border:1px solid #c9a227;border-radius:12px;">  
+  <h2 style="color:#e5c45b;">💬 Community Comments</h2>  
+  <p id="auth-status">Sign in with Google to join the conversation.</p>  
+  <button id="google-signin" type="button">Sign in with Google</button>  
+  <button id="google-signout" type="button" hidden>Sign out</button>    <form id="comment-form" hidden>  
+    <label for="comment-text">Write a comment</label>  
+    <textarea id="comment-text" maxlength="500" required  
+      placeholder="Keep it respectful..."  
+      style="display:block;width:100%;box-sizing:border-box;min-height:90px;margin:10px 0;padding:12px;"></textarea>  
+    <button type="submit">Post comment</button>  
+    <p id="comment-message" aria-live="polite"></p>  
+  </form>    <h3>Latest comments</h3>  
+  <div id="comment-list" aria-live="polite">Loading comments…</div>  
+</section>  </body>  
+</html>
       
